@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
 
     private EnemyFeedback _feedback;
     private EnemyDeathExplosion _explosion;
+
+    public Action<Enemy> OnDeath;
 
     public void Setup(EnemySO so, int zone)
     {
@@ -126,6 +129,8 @@ public class Enemy : MonoBehaviour
     {
         _feedback?.OnDeath();
         _explosion?.Play();
+
+        OnDeath?.Invoke(this);
 
         StartCoroutine(DeathRoutine());
     }
