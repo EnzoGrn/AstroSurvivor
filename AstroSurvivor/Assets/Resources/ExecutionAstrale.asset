@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4bd24a283f964aa635281b8a3041a, type: 3}
+  m_Name: ExecutionAstrale
+  m_EditorClassIdentifier: Assembly-CSharp::AstroSurvivor.TalentNodeData
+  talentName: "Ex\xE9cution Astrale"
+  description: 
+  icon: {fileID: 0}
+  statModifiers:
+  - statType: 3
+    value: 25
+    description: 
+  nodeId: crit_damage_1
+  requiredLevel: 8
+  parentNodeIds:
+  - crit_chance_1
+  - damage_1
+  maxPoints: 3
+  pointCost: 2
+  treePosition: {x: 0, y: -450}
+  nodeColor: {r: 0.8490566, g: 0.46378466, b: 0.10012458, a: 1}

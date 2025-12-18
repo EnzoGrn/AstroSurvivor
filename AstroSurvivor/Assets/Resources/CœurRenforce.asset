@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc4bd24a283f964aa635281b8a3041a, type: 3}
+  m_Name: "C\u0153urRenforce"
+  m_EditorClassIdentifier: Assembly-CSharp::AstroSurvivor.TalentNodeData
+  talentName: "C\u0153ur Renforc\xE9"
+  description: 
+  icon: {fileID: 0}
+  statModifiers:
+  - statType: 0
+    value: 15
+    description: 
+  nodeId: hp_root
+  requiredLevel: 1
+  parentNodeIds: []
+  maxPoints: 3
+  pointCost: 1
+  treePosition: {x: 0, y: 0}
+  nodeColor: {r: 0.18752226, g: 0.8113208, b: 0.19018847, a: 1}
