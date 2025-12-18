@@ -32,7 +32,7 @@ namespace AstroSurvivor {
             return results;
         }
 
-        private UpgradeData Roll(List<UpgradeData> pool)
+        public UpgradeData Roll(List<UpgradeData> pool)
         {
             float totalWeight = 0f;
 
@@ -50,7 +50,7 @@ namespace AstroSurvivor {
             return pool[0];
         }
 
-        private float GetWeight(UpgradeRarity rarity)
+        public float GetWeight(UpgradeRarity rarity)
         {
             return RarityWeights.Find(r => r.Rarity == rarity)?.Weight ?? 1f;
         }
