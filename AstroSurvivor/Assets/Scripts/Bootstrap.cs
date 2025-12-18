@@ -10,6 +10,8 @@ public class Bootstrap : MonoBehaviour {
 
     void Awake()
     {
+        BuildSaveSystem.Save(new PlayerBuildState());
+
         Context = new PlayerContext() {
             Stats = Stats,
             ModuleController = new PlayerModuleController(transform),

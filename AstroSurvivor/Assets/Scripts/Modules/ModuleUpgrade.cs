@@ -9,7 +9,7 @@ namespace AstroSurvivor {
 
         public override void Apply(PlayerContext context)
         {
-            // context.Modules.SpawnModule(ModulePrefab);
+            context.ModuleController.SpawnModule(context, ModulePrefab);
         }
     }
 }
