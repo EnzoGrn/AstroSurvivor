@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController3D : MonoBehaviour
@@ -10,33 +11,85 @@ public class PlayerController3D : MonoBehaviour
     [Header("Space Settings")]
     [SerializeField] private float dragCoefficient = 3f;
 
+    [Header("Barrel Roll")]
+    [SerializeField] private float barrelRollDuration = 0.8f;
+    [SerializeField] private float barrelRollCooldown = 1.5f;
+
     private Rigidbody _rigidbody;
     private Camera _mainCamera;
     private Plane _movementPlane;
+    private bool _isBarrelRolling = false;
+    private float _lastBarrelRollTime = -999f;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _mainCamera = Camera.main;
-
         _rigidbody.useGravity = false;
         _rigidbody.angularDamping = 2f;
         _rigidbody.freezeRotation = true;
-
         _movementPlane = new Plane(Vector3.up, Vector3.zero);
+    }
+
+    private void Update()
+    {
+        // Détection de la touche Espace pour le barrel roll
+        if (Input.GetKeyDown(KeyCode.Space) && CanBarrelRoll())
+        {
+            StartCoroutine(PerformBarrelRoll());
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
-        RotateTowardsMouse();
+        if (!_isBarrelRolling)
+        {
+            Move();
+            RotateTowardsMouse();
+        }
+    }
+
+    private bool CanBarrelRoll()
+    {
+        return !_isBarrelRolling && (Time.time - _lastBarrelRollTime) >= barrelRollCooldown;
+    }
+
+    private IEnumerator PerformBarrelRoll()
+    {
+        _isBarrelRolling = true;
+        _lastBarrelRollTime = Time.time;
+        _rigidbody.freezeRotation = false;
+
+        // Stocker la rotation Y initiale (rotation horizontale du joueur)
+        float initialYRotation = transform.eulerAngles.y;
+
+        float elapsed = 0f;
+
+        while (elapsed < barrelRollDuration)
+        {
+            elapsed += Time.deltaTime;
+            float progress = elapsed / barrelRollDuration;
+
+            // Calculer l'angle de roll (0 à 360 degrés)
+            float rollAngle = progress * 360f;
+
+            // Combiner la rotation Y (direction du joueur) avec le roll Z
+            Quaternion targetRotation = Quaternion.Euler(0f, initialYRotation, rollAngle);
+            _rigidbody.MoveRotation(targetRotation);
+
+            yield return null;
+        }
+
+        // Réinitialiser à la rotation Y finale sans roll
+        _rigidbody.MoveRotation(Quaternion.Euler(0f, initialYRotation, 0f));
+        _rigidbody.freezeRotation = true;
+        _isBarrelRolling = false;
     }
 
     private void Move()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (movement.magnitude > 0.1f)
@@ -55,7 +108,6 @@ public class PlayerController3D : MonoBehaviour
 
         Vector3 vel = _rigidbody.linearVelocity;
         vel.y = 0f;
-
         if (vel.magnitude > maxSpeed)
         {
             vel = vel.normalized * maxSpeed;
