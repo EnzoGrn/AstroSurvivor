@@ -171,9 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bdeb5be190ab464a9c9a23d0b6b23b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController3D
-  maxSpeed: 20
+  maxSpeed: 30
   rotationSpeed: 15
-  dragCoefficient: 3
 --- !u!54 &2584623838487477626
 Rigidbody:
   m_ObjectHideFlags: 0
