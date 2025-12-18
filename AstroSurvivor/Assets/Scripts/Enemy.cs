@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
         switch (attackType)
         {
             case EnemyAttackType.Ram:
-                // dégâts au contact (via collider)
                 break;
 
             case EnemyAttackType.Gatling:
@@ -102,5 +101,19 @@ public class Enemy : MonoBehaviour
     {
         hp -= dmg;
         if (hp <= 0) Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerController3D player))
+        {
+            player.TakeDamage(damage);
+            OnRamHit();
+        }
+    }
+
+    private void OnRamHit()
+    {
+        Destroy(gameObject);
     }
 }

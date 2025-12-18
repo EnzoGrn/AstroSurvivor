@@ -38,11 +38,6 @@ public class PlayerController3D : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
-        if (horizontal != 0 || vertical != 0)
-        {
-            Debug.Log($"Input détecté: H={horizontal}, V={vertical}");
-        }
-
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
         if (movement.magnitude > 0.1f)
@@ -50,8 +45,6 @@ public class PlayerController3D : MonoBehaviour
             Vector3 targetVelocity = movement * maxSpeed;
             targetVelocity.y = _rigidbody.linearVelocity.y;
             _rigidbody.linearVelocity = Vector3.Lerp(_rigidbody.linearVelocity, targetVelocity, 0.5f);
-
-            Debug.Log($"Force appliquée: {movement}, Vitesse actuelle: {_rigidbody.linearVelocity.magnitude}");
         }
         else
         {
@@ -93,5 +86,11 @@ public class PlayerController3D : MonoBehaviour
                 _rigidbody.MoveRotation(newRotation);
             }
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        // Implémenter la logique de prise de dégâts ici
+        Debug.Log($"Player took {damage} damage.");
     }
 }
