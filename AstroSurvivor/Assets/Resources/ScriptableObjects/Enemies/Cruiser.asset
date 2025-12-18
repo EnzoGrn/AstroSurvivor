@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85def027697a25e4c85e5284e252350f, type: 3}
+  m_Name: Cruiser
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySO
+  enemyName: Cruiser
+  baseHP: 50
+  baseDamage: 10
+  speed: 5
+  isRanged: 0
+  gatlingShots: 1
+  missiles: 0
+  prefab: {fileID: 1994362409992390, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}

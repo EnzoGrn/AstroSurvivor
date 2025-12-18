@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Projectile collided with " + other.name);
-        if (other.GetComponent<EnemyHealth>() is EnemyHealth enemy)
+        if (other.GetComponent<Enemy>() is Enemy enemy)
         {
             enemy.TakeDamage(_damage);
             Disable();
