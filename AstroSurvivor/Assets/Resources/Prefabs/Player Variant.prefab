@@ -173,6 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController3D
   maxSpeed: 30
   rotationSpeed: 15
+  dragCoefficient: 3
+  barrelRollDuration: 0.8
+  barrelRollCooldown: 1.5
 --- !u!54 &2584623838487477626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -198,7 +201,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 36
   m_CollisionDetection: 0
 --- !u!114 &4634030763194780229
 MonoBehaviour:
