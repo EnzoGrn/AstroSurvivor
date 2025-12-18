@@ -250,6 +250,21 @@ namespace AstroSurvivor
         #endregion
 
         #region Debug
+
+        private void OnEnable()
+        {
+            OnStatsChanged += Debug_PrintStats;
+        }
+
+        private void Debug_PrintStats()
+        {
+            Debug.Log(
+                $"HP:{currentMaxHp} | DMG:{currentDamage} | " +
+                $"CRIT:{currentCriticalChance}% | AS:{currentAttackSpeed} | " +
+                $"PROJ:{currentProjectileCount}"
+            );
+        }
+
         private void OnValidate()
         {
             // Validation en mode éditeur

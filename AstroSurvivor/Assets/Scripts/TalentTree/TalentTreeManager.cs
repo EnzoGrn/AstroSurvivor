@@ -326,6 +326,7 @@ namespace AstroSurvivor
         #endregion
 
         #region Debug
+
         [ContextMenu("Add 10 Talent Points")]
         private void Debug_Add10Points()
         {
