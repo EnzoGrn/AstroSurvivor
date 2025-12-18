@@ -20,7 +20,6 @@ public class PlayerController3D : MonoBehaviour
         _mainCamera = Camera.main;
 
         _rigidbody.useGravity = false;
-        _rigidbody.linearDamping = dragCoefficient;
         _rigidbody.angularDamping = 2f;
         _rigidbody.freezeRotation = true;
 

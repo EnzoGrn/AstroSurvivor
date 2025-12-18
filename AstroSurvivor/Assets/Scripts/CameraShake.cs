@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
 
     private void Awake()
     {
-        _originalPosition = transform.localPosition;
+        _originalPosition = transform.position;
     }
 
     public void Shake(float duration = 0.1f, float strength = 0.2f)
@@ -28,12 +28,12 @@ public class CameraShake : MonoBehaviour
             Vector3 randomOffset = Random.insideUnitSphere * strength;
             randomOffset.y = 0f;
 
-            transform.localPosition = _originalPosition + randomOffset;
+            transform.position = _originalPosition + randomOffset;
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        transform.localPosition = _originalPosition;
+        transform.position = _originalPosition;
     }
 }
