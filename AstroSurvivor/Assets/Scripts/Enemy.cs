@@ -1,10 +1,11 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
     private Transform player;
 
-    private int hp;
+    private int _currentHealth;
     private int damage;
     private float speed;
     private float attackRange;
@@ -13,16 +14,22 @@ public class Enemy : MonoBehaviour
 
     private float attackTimer;
 
+    private EnemyFeedback _feedback;
+    private EnemyDeathExplosion _explosion;
+
     public void Setup(EnemySO so, int zone)
     {
-        hp = so.GetScaledHP(zone);
+        _currentHealth = so.GetScaledHP(zone);
         damage = so.GetScaledDamage(zone);
         speed = so.speed;
         attackRange = so.attackRange;
         attackSpeed = so.attackSpeed;
         attackType = so.attackType;
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        _feedback = GetComponent<EnemyFeedback>();
+        _explosion = GetComponent<EnemyDeathExplosion>();
     }
 
     private void Update()
@@ -45,12 +52,14 @@ public class Enemy : MonoBehaviour
         Vector3 lookDir = player.position - transform.position;
         lookDir.y = 0f;
 
-        if (lookDir != Vector3.zero)
+        if (lookDir.sqrMagnitude > 0.001f)
+        {
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,
                 Quaternion.LookRotation(lookDir),
                 Time.deltaTime * 10f
             );
+        }
     }
 
     private void HandleAttack()
@@ -73,7 +82,7 @@ public class Enemy : MonoBehaviour
         switch (attackType)
         {
             case EnemyAttackType.Ram:
-                // dégâts au contact (via collider)
+                // handled by collision
                 break;
 
             case EnemyAttackType.Gatling:
@@ -88,19 +97,64 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Gatling shot");
-        // spawn projectile ici
+        // TODO : spawn projectile
+        Debug.Log("Enemy Gatling shot");
     }
 
     private void LaunchMissile()
     {
-        Debug.Log("Missile launched");
-        // spawn missile ici
+        // TODO : spawn missile
+        Debug.Log("Enemy Missile launched");
     }
+
+    // ======================
+    // DAMAGE & FEEDBACK
+    // ======================
 
     public void TakeDamage(int dmg)
     {
-        hp -= dmg;
-        if (hp <= 0) Destroy(gameObject);
+        _currentHealth -= dmg;
+        _feedback?.OnHit();
+
+        if (_currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        _feedback?.OnDeath();
+        _explosion?.Play();
+
+        StartCoroutine(DeathRoutine());
+    }
+
+    private IEnumerator DeathRoutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
+    }
+
+    // ======================
+    // RAM ATTACK
+    // ======================
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerController3D playerController))
+        {
+            playerController.TakeDamage(damage);
+
+            PlayerFeedback playerFeedback = playerController.GetComponent<PlayerFeedback>();
+            playerFeedback?.OnPlayerHit();
+
+            OnRamHit();
+        }
+    }
+
+    private void OnRamHit()
+    {
+        Die();
     }
 }
