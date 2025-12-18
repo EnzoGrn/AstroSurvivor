@@ -19,4 +19,4 @@ MonoBehaviour:
   Rarity: 1
   Icon: {fileID: 21300000, guid: 5e20bf890ef65154ea6086b488a02f5f, type: 3}
   Prerequisites: []
-  ModulePrefab: {fileID: 0}
+  ModulePrefab: {fileID: 4906901316909211529, guid: 66640a25dca2442479f2b86510224c9a, type: 3}

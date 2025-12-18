@@ -14,11 +14,13 @@ namespace AstroSurvivor {
             _PlayerTransform = player;
         }
 
-        public void SpawnModule(ModuleBehaviour prefab)
+        public void SpawnModule(PlayerContext context, ModuleBehaviour prefab)
         {
             var module = GameObject.Instantiate(prefab, _PlayerTransform.position, Quaternion.identity);
 
-            module.Initialize(null);
+            module.transform.parent = _PlayerTransform;
+
+            module.Initialize(context);
 
             _ActiveModules.Add(module);
         }
