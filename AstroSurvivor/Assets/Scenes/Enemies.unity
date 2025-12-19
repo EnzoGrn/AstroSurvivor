@@ -2906,14 +2906,6 @@ PrefabInstance:
       propertyPath: UpgradeUI
       value: 
       objectReference: {fileID: 62660345}
-    - target: {fileID: 5833120307499511242, guid: f4013be121363444f9303f57c72ec2b0, type: 3}
-      propertyPath: baseMoveSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 5833120307499511242, guid: f4013be121363444f9303f57c72ec2b0, type: 3}
-      propertyPath: baseAttackSpeed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7605119226955236468, guid: f4013be121363444f9303f57c72ec2b0, type: 3}
       propertyPath: m_Name
       value: Player Variant

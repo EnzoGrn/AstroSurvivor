@@ -637,7 +637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1029753612667854, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1029753612667854, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}
       propertyPath: m_IsActive
@@ -764,6 +764,7 @@ MonoBehaviour:
   dragCoefficient: 3
   barrelRollDuration: 0.8
   barrelRollCooldown: 1.5
+  barrelRollBoostMultiplier: 2.5
   thrusters: {fileID: 3672739397094087156}
 --- !u!54 &2584623838487477626
 Rigidbody:
@@ -836,10 +837,10 @@ MonoBehaviour:
   baseDamage: 10
   baseCriticalChance: 5
   baseCriticalDamage: 150
-  baseAttackSpeed: 1
+  baseAttackSpeed: 3
   baseProjectileCount: 1
   baseRange: 10
-  baseMoveSpeed: 20
+  baseMoveSpeed: 50
   moveSpeedModifier: 0
 --- !u!114 &9042050831415521410
 MonoBehaviour:
