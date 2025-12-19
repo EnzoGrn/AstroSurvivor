@@ -1,3 +1,4 @@
+using AstroSurvivor.UI;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +17,11 @@ public class EnemySpawner : MonoBehaviour {
 
     private int aliveEnemies = 0;
 
+    public WaveUI waveUI;
+    public UpgradeUIController upgradePanelController;
+
+    private bool _Selected;
+
     private void Start()
     {
         StartCoroutine(InfiniteWaveLoop());
@@ -24,15 +30,30 @@ public class EnemySpawner : MonoBehaviour {
     private IEnumerator InfiniteWaveLoop()
     {
         while (true) {
+            _Selected = false;
 
+            waveUI.ShowWave(currentWave);
+
+            yield return new WaitForSeconds(0.5f);
             yield return StartCoroutine(SpawnProceduralWave());
             yield return new WaitUntil(() => aliveEnemies == 0);
 
+            if (upgradePanelController.Open()) {
+                upgradePanelController.OnSelected += OnNextPhase;
+
+                yield return new WaitUntil(() => _Selected == true);
+            }
+
             currentWave++;
             currentZone++;
-
-            yield return new WaitForSeconds(2f);
         }
+    }
+
+    public void OnNextPhase()
+    {
+        upgradePanelController.OnSelected -= OnNextPhase;
+
+        _Selected = true;
     }
 
     private IEnumerator SpawnProceduralWave()
