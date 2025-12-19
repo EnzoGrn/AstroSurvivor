@@ -16,11 +16,14 @@ public class GatlingWeapon : MonoBehaviour
 
     private PlayerStats _stats;
 
+    private bool _isFiring = false;
+
     private void Awake()
     {
         _stats = GetComponentInParent<PlayerStats>();
 
         InitializePool();
+        _isFiring = true;
     }
 
     private void Update()
@@ -30,6 +33,8 @@ public class GatlingWeapon : MonoBehaviour
 
     private void HandleAutoFire()
     {
+        if (!_isFiring) return;
+
         float fireRate = _stats.AttackSpeed;
 
         _fireTimer += Time.deltaTime;
@@ -73,5 +78,15 @@ public class GatlingWeapon : MonoBehaviour
         _currentIndex = (_currentIndex + 1) % poolSize;
         proj.gameObject.SetActive(true);
         return proj;
+    }
+
+    public void StartFiring()
+    {
+        _isFiring = true;
+    }
+
+    public void StopFiring()
+    {
+        _isFiring = false;
     }
 }

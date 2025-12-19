@@ -14,6 +14,7 @@ public class PlayerController3D : MonoBehaviour
     [Header("Barrel Roll")]
     [SerializeField] private float barrelRollDuration = 0.8f;
     [SerializeField] private float barrelRollCooldown = 1.5f;
+    [SerializeField] private float barrelRollBoostMultiplier = 2.5f; // Multiplicateur de vitesse pendant le barrel roll
 
     public ThrustersSyncController thrusters;
 
@@ -75,8 +76,29 @@ public class PlayerController3D : MonoBehaviour
         _lastBarrelRollTime = Time.time;
         _rigidbody.freezeRotation = false;
 
+        // Get the main camera, get the script camerafollow3d and dezoom the camera a bit, then rezoom it at the end of the barrel roll
+        Camera camera = Camera.main;
+        CameraFollow3D cameraFollow = camera.GetComponent<CameraFollow3D>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.DezoomForBarrelRoll();
+        }
+
+        GatlingWeapon gatlingWeapon = GetComponentInChildren<GatlingWeapon>();
+        if (gatlingWeapon != null)
+        {
+            gatlingWeapon.StopFiring();
+        }
+
         // Stocker la rotation Y initiale (rotation horizontale du joueur)
         float initialYRotation = transform.eulerAngles.y;
+
+        // Stocker la direction initiale vers laquelle regarde le vaisseau
+        Vector3 boostDirection = transform.forward;
+
+        // Appliquer le boost de vitesse dans la direction du vaisseau
+        float boostSpeed = _stats.MoveSpeed * barrelRollBoostMultiplier;
+        _rigidbody.linearVelocity = boostDirection * boostSpeed;
 
         float elapsed = 0f;
 
@@ -92,6 +114,9 @@ public class PlayerController3D : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0f, initialYRotation, rollAngle);
             _rigidbody.MoveRotation(targetRotation);
 
+            // Maintenir le boost pendant toute la durée du barrel roll
+            _rigidbody.linearVelocity = boostDirection * boostSpeed;
+
             yield return null;
         }
 
@@ -99,6 +124,17 @@ public class PlayerController3D : MonoBehaviour
         _rigidbody.MoveRotation(Quaternion.Euler(0f, initialYRotation, 0f));
         _rigidbody.freezeRotation = true;
         _isBarrelRolling = false;
+
+        // Rezoom the camera back to normal
+        if (cameraFollow != null)
+        {
+            cameraFollow.RezoomAfterBarrelRoll();
+        }
+
+        if (gatlingWeapon != null)
+        {
+            gatlingWeapon.StartFiring();
+        }
     }
 
     private void Move()
