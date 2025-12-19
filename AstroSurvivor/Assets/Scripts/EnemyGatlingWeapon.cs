@@ -1,17 +1,17 @@
 using AstroSurvivor;
 using UnityEngine;
 
-public class GatlingWeapon : MonoBehaviour
+public class EnemyGatlingWeapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
-    [SerializeField] private Projectile projectilePrefab;
+    [SerializeField] private EnemyProjectile projectilePrefab;
     [SerializeField] private float projectileSpeed = 25f;
 
     [Header("Pooling")]
     [SerializeField] private int poolSize = 30;
 
     private float _fireTimer;
-    private Projectile[] _projectilePool;
+    private EnemyProjectile[] _projectilePool;
     private int _currentIndex;
 
     private PlayerStats _stats;
@@ -48,7 +48,7 @@ public class GatlingWeapon : MonoBehaviour
 
     public void Fire()
     {
-        Projectile projectile = GetNextProjectile();
+        EnemyProjectile projectile = GetNextProjectile();
 
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
@@ -62,19 +62,19 @@ public class GatlingWeapon : MonoBehaviour
 
     private void InitializePool()
     {
-        _projectilePool = new Projectile[poolSize];
+        _projectilePool = new EnemyProjectile[poolSize];
 
         for (int i = 0; i < poolSize; i++)
         {
-            Projectile proj = Instantiate(projectilePrefab);
+            EnemyProjectile proj = Instantiate(projectilePrefab);
             proj.gameObject.SetActive(false);
             _projectilePool[i] = proj;
         }
     }
 
-    private Projectile GetNextProjectile()
+    private EnemyProjectile GetNextProjectile()
     {
-        Projectile proj = _projectilePool[_currentIndex];
+        EnemyProjectile proj = _projectilePool[_currentIndex];
         _currentIndex = (_currentIndex + 1) % poolSize;
         proj.gameObject.SetActive(true);
         return proj;

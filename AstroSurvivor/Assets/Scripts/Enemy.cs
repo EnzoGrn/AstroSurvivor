@@ -22,16 +22,8 @@ public class Enemy : MonoBehaviour
 
     public Action<Enemy> OnDeath;
 
-    // ======================
-    // HEALTH BAR
-    // ======================
-    [Header("Health Bar")]
-    public GameObject healthBarPrefab;
-    public Vector3 healthBarOffset = new Vector3(0f, 2f, 0f);
-
-    private Image _healthFill;
-    private Transform _healthBarTransform;
-    private Camera _cam;
+    [Header("Weapons")]
+    [SerializeField] private EnemyGatlingWeapon[] gatlingWeapons;
 
     public void Setup(EnemySO so, int zone)
     {
@@ -48,21 +40,6 @@ public class Enemy : MonoBehaviour
         _feedback = GetComponent<EnemyFeedback>();
         _explosion = GetComponent<EnemyDeathExplosion>();
 
-        SetupHealthBar();
-    }
-
-    private void SetupHealthBar()
-    {
-        if (healthBarPrefab == null) return;
-
-        GameObject hb = Instantiate(healthBarPrefab, transform);
-        hb.transform.localPosition = healthBarOffset;
-
-        _healthBarTransform = hb.transform;
-        _healthFill = hb.GetComponentInChildren<Image>();
-        _cam = Camera.main;
-
-        UpdateHealthBar();
     }
 
     private void Update()
@@ -72,25 +49,6 @@ public class Enemy : MonoBehaviour
         MoveTowardPlayer();
         RotateTowardPlayer();
         HandleAttack();
-        UpdateHealthBarRotation();
-    }
-
-    private void UpdateHealthBarRotation()
-    {
-        if (_healthBarTransform != null && _cam != null)
-        {
-            _healthBarTransform.rotation =
-                Quaternion.LookRotation(_healthBarTransform.position - _cam.transform.position);
-        }
-    }
-
-    private void UpdateHealthBar()
-    {
-        if (_healthFill != null)
-        {
-            float percent = (float)_currentHealth / _maxHealth;
-            _healthFill.fillAmount = percent;
-        }
     }
 
     private void MoveTowardPlayer()
@@ -147,6 +105,17 @@ public class Enemy : MonoBehaviour
     private void Shoot()
     {
         Debug.Log("Enemy Gatling shot");
+
+        if (gatlingWeapons == null || gatlingWeapons.Length == 0)
+            return;
+
+        foreach (var weapon in gatlingWeapons)
+        {
+            if (weapon != null)
+            {
+                weapon.Fire(); // Appelle le tir sur chaque canon
+            }
+        }
     }
 
     private void LaunchMissile()
@@ -163,8 +132,6 @@ public class Enemy : MonoBehaviour
         _currentHealth -= dmg;
         _feedback?.OnHit();
 
-        UpdateHealthBar();
-
         if (_currentHealth <= 0)
         {
             Die();
@@ -177,9 +144,6 @@ public class Enemy : MonoBehaviour
         _explosion?.Play();
 
         OnDeath?.Invoke(this);
-
-        if (_healthBarTransform != null)
-            Destroy(_healthBarTransform.gameObject);
 
         StartCoroutine(DeathRoutine());
     }

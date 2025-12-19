@@ -13,6 +13,10 @@ PrefabInstance:
       value: Cruiser
       objectReference: {fileID: 0}
     - target: {fileID: 1994362409992390, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994362409992390, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -118,8 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151e4627fd37ee49893fcac4be5e06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  healthBarPrefab: {fileID: 0}
-  healthBarOffset: {x: 0, y: 2, z: 0}
+  gatlingWeapons: []
 --- !u!54 &-969091796361275725
 Rigidbody:
   m_ObjectHideFlags: 0

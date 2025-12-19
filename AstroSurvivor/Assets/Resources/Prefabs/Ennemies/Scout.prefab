@@ -13,6 +13,10 @@ PrefabInstance:
       value: Scout
       objectReference: {fileID: 0}
     - target: {fileID: 1525581290968928, guid: 6cb85941fc317e843bb3db908ed714e9, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1525581290968928, guid: 6cb85941fc317e843bb3db908ed714e9, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -106,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151e4627fd37ee49893fcac4be5e06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  healthBarPrefab: {fileID: 0}
-  healthBarOffset: {x: 0, y: 2, z: 0}
+  gatlingWeapons: []
 --- !u!114 &4297105317838221469
 MonoBehaviour:
   m_ObjectHideFlags: 0
