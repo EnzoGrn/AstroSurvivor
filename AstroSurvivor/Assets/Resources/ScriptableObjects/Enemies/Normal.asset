@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Normal
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   prefab: {fileID: 8184047710536272404, guid: b87e53524dcda9b4d90f64151e7d6817, type: 3}
-  baseHP: 10
+  baseHP: 25
   baseDamage: 5
   speed: 10
   attackType: 1

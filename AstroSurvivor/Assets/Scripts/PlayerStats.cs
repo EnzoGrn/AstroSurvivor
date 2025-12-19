@@ -22,6 +22,9 @@ namespace AstroSurvivor
         [SerializeField] private int baseProjectileCount = 1;
         [SerializeField] private float baseRange = 10f;
 
+        [Header("Movement")]
+        [SerializeField] private float baseMoveSpeed = 20f;
+
         // Valeurs actuelles (avec modificateurs)
         private float currentMaxHp;
         private float currentHp;
@@ -41,6 +44,7 @@ namespace AstroSurvivor
         private float attackSpeedModifier = 0f;
         private int projectileCountModifier = 0;
         private float rangeModifier = 0f;
+        public float moveSpeedModifier = 0f;
 
         // Events pour notifier les changements
         public event Action<float, float> OnHealthChanged; // currentHp, maxHp
@@ -59,6 +63,9 @@ namespace AstroSurvivor
         public int ProjectileCount => currentProjectileCount;
         public float Range => currentRange;
         public bool IsAlive => currentHp > 0;
+
+        public float MoveSpeed => baseMoveSpeed * (1f + moveSpeedModifier / 100f);
+
         #endregion
 
         private void Start()
@@ -235,10 +242,7 @@ namespace AstroSurvivor
             bool isCritical = UnityEngine.Random.Range(0f, 100f) < currentCriticalChance;
             
             if (isCritical)
-            {
                 return currentDamage * (currentCriticalDamage / 100f);
-            }
-            
             return currentDamage;
         }
 
