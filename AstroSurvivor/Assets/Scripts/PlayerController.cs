@@ -15,6 +15,8 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField] private float barrelRollDuration = 0.8f;
     [SerializeField] private float barrelRollCooldown = 1.5f;
 
+    public ThrustersSyncController thrusters;
+
     private Rigidbody _rigidbody;
     private Camera _mainCamera;
     private Plane _movementPlane;
@@ -105,6 +107,8 @@ public class PlayerController3D : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 movement = new Vector3(horizontal, 0f, vertical).normalized;
 
+        Vector2 moveInput = new Vector2(horizontal, vertical).normalized;
+        thrusters.UpdateThrusters(moveInput);
         if (movement.magnitude > 0.1f)
         {
             Vector3 targetVelocity = movement * _stats.MoveSpeed;
