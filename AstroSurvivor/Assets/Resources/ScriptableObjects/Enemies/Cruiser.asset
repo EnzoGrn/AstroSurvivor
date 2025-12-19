@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cruiser
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   prefab: {fileID: 2715177776367539143, guid: 0ad5f33060e5377499c5134502ef6e67, type: 3}
-  baseHP: 50
+  baseHP: 150
   baseDamage: 10
-  speed: 10
-  attackType: 1
-  attackRange: 0
-  attackSpeed: 0
+  speed: 25
+  attackType: 2
+  attackRange: 100
+  attackSpeed: 0.5

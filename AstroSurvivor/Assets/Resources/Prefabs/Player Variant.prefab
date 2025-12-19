@@ -1217,6 +1217,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 5666217272097812057, guid: ca3952125c4cce74c90b9aebb8f9d91b, type: 3}
   projectileSpeed: 25
   poolSize: 30
+  enemySO: {fileID: 0}
   _isFiring: 1
 --- !u!1 &2299526898158705586
 GameObject:
@@ -4850,7 +4851,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPool:
   - {fileID: 11400000, guid: 357a69d8b3d1a874e8b5563830bb07e3, type: 2}
-  - {fileID: 11400000, guid: 445709b8da9d70440bd4e5e8ed416f7c, type: 2}
   - {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
   spawnPoints:
   - {fileID: 6065145108934747728}
@@ -5689,6 +5689,7 @@ MonoBehaviour:
   baseProjectileCount: 1
   baseRange: 10
   baseMoveSpeed: 50
+  currentDamage: 0
   moveSpeedModifier: 0
 --- !u!114 &9042050831415521410
 MonoBehaviour:

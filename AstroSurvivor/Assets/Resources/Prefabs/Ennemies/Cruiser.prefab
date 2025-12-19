@@ -1,5 +1,250 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1853534623348707602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6230811652319814544}
+  - component: {fileID: 3392408903313230813}
+  m_Layer: 8
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6230811652319814544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853534623348707602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.7, y: -1.8, z: -0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2718438199400743959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3392408903313230813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853534623348707602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c2f711620a2a949bfd98f2891b17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGatlingWeapon
+  projectilePrefab: {fileID: 2854232852806310068, guid: c1a27483ca96ebe428954f62447bf094, type: 3}
+  projectileSpeed: 25
+  poolSize: 30
+  enemySO: {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
+  _isFiring: 0
+--- !u!1 &2412816404950555588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4606182873229169989}
+  - component: {fileID: 7543769314146087633}
+  m_Layer: 8
+  m_Name: GameObject (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4606182873229169989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412816404950555588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.2, y: -5.6, z: 16.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2718438199400743959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7543769314146087633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412816404950555588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c2f711620a2a949bfd98f2891b17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGatlingWeapon
+  projectilePrefab: {fileID: 2854232852806310068, guid: c1a27483ca96ebe428954f62447bf094, type: 3}
+  projectileSpeed: 25
+  poolSize: 30
+  enemySO: {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
+  _isFiring: 0
+--- !u!1 &5701260233335675280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8402283049709264235}
+  - component: {fileID: 401984845646190221}
+  m_Layer: 8
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8402283049709264235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701260233335675280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.6, z: 24.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2718438199400743959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &401984845646190221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5701260233335675280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c2f711620a2a949bfd98f2891b17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGatlingWeapon
+  projectilePrefab: {fileID: 2854232852806310068, guid: c1a27483ca96ebe428954f62447bf094, type: 3}
+  projectileSpeed: 25
+  poolSize: 30
+  enemySO: {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
+  _isFiring: 0
+--- !u!1 &5907393817592462055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2158210428455948639}
+  - component: {fileID: 4171054728307309876}
+  m_Layer: 8
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2158210428455948639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907393817592462055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.2, y: -5.6, z: 16.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2718438199400743959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4171054728307309876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5907393817592462055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c2f711620a2a949bfd98f2891b17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGatlingWeapon
+  projectilePrefab: {fileID: 2854232852806310068, guid: c1a27483ca96ebe428954f62447bf094, type: 3}
+  projectileSpeed: 25
+  poolSize: 30
+  enemySO: {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
+  _isFiring: 0
+--- !u!1 &8048298841530031011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4410483463317498616}
+  - component: {fileID: 8357437851625459821}
+  m_Layer: 8
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4410483463317498616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048298841530031011}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.7, y: -1.8, z: -0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2718438199400743959}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8357437851625459821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048298841530031011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c2f711620a2a949bfd98f2891b17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyGatlingWeapon
+  projectilePrefab: {fileID: 2854232852806310068, guid: c1a27483ca96ebe428954f62447bf094, type: 3}
+  projectileSpeed: 25
+  poolSize: 30
+  enemySO: {fileID: 11400000, guid: 109a8dbcab7509d409471957cec2b769, type: 2}
+  _isFiring: 0
 --- !u!1001 &2713746506752217857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,7 +335,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8402283049709264235}
+    - targetCorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2158210428455948639}
+    - targetCorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4606182873229169989}
+    - targetCorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6230811652319814544}
+    - targetCorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4410483463317498616}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1994362409992390, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
       insertIndex: -1
@@ -122,7 +382,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151e4627fd37ee49893fcac4be5e06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  gatlingWeapons: []
+  gatlingWeapons:
+  - {fileID: 401984845646190221}
+  - {fileID: 4171054728307309876}
+  - {fileID: 7543769314146087633}
+  - {fileID: 3392408903313230813}
+  - {fileID: 8357437851625459821}
 --- !u!54 &-969091796361275725
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -179,3 +444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDeathExplosion
   explosionPrefab: {fileID: 8464950693656172981, guid: 83ad694f134ab954580473212156b35a, type: 3}
+--- !u!4 &2718438199400743959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4784191221667606, guid: 7aa23275d75eedf468e95cc24b0812b7, type: 3}
+  m_PrefabInstance: {fileID: 2713746506752217857}
+  m_PrefabAsset: {fileID: 0}

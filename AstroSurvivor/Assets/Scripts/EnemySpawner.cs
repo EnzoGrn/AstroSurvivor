@@ -85,7 +85,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private EnemySO SelectEnemy()
     {
-        int maxIndex = Mathf.Min(enemyPool.Length, 1 + currentWave / 5);
+        int maxIndex = Mathf.Min(enemyPool.Length, 1 + currentWave / 2);
 
         return enemyPool[Random.Range(0, maxIndex)];
     }

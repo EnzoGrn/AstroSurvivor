@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scout
   m_EditorClassIdentifier: Assembly-CSharp::EnemySO
   prefab: {fileID: 8491979277796876810, guid: 9b51f48d8015bb646912021e3e188b8e, type: 3}
-  baseHP: 5
+  baseHP: 25
   baseDamage: 25
   speed: 70
   attackType: 1
