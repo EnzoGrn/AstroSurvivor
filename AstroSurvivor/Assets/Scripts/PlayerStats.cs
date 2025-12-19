@@ -10,7 +10,7 @@ namespace AstroSurvivor
     {
         [Header("Points de vie")]
         [SerializeField] private float baseMaxHp = 100f;
-        [SerializeField] private float baseShield = 0f;
+        [SerializeField] private float baseMaxShield = 25f;
 
         [Header("Dégâts")]
         [SerializeField] private float baseDamage = 10f;
@@ -29,6 +29,7 @@ namespace AstroSurvivor
         private float currentMaxHp;
         private float currentHp;
         private float currentShield;
+        private float currentMaxShield;
         public float currentDamage;
         private float currentCriticalChance;
         private float currentCriticalDamage;
@@ -55,7 +56,10 @@ namespace AstroSurvivor
         #region Properties
         public float MaxHp => currentMaxHp;
         public float CurrentHp => currentHp;
-        public float Shield => currentShield;
+
+        public float CurrentShield => currentShield;
+        public float MaxShield => currentMaxShield;
+
         public float Damage => currentDamage;
         public float CriticalChance => currentCriticalChance;
         public float CriticalDamage => currentCriticalDamage;
@@ -80,7 +84,7 @@ namespace AstroSurvivor
         {
             RecalculateStats();
             currentHp = currentMaxHp;
-            currentShield = baseShield;
+            currentShield = baseMaxShield;
             OnHealthChanged?.Invoke(currentHp, currentMaxHp);
             OnShieldChanged?.Invoke(currentShield);
         }
@@ -188,31 +192,25 @@ namespace AstroSurvivor
         /// </summary>
         public void TakeDamage(float damage)
         {
-            if (!IsAlive) return;
-
+            if (!IsAlive)
+                return;
             // Le bouclier absorbe d'abord les dégâts
-            if (currentShield > 0)
-            {
+            if (currentShield > 0) {
                 float remainingDamage = damage - currentShield;
+
                 currentShield = Mathf.Max(0, currentShield - damage);
+
                 OnShieldChanged?.Invoke(currentShield);
 
                 if (remainingDamage > 0)
-                {
                     currentHp = Mathf.Max(0, currentHp - remainingDamage);
-                }
             }
             else
-            {
                 currentHp = Mathf.Max(0, currentHp - damage);
-            }
-
             OnHealthChanged?.Invoke(currentHp, currentMaxHp);
 
             if (currentHp <= 0)
-            {
                 Die();
-            }
         }
 
         /// <summary>
@@ -220,9 +218,10 @@ namespace AstroSurvivor
         /// </summary>
         public void Heal(float amount)
         {
-            if (!IsAlive) return;
-
+            if (!IsAlive)
+                return;
             currentHp = Mathf.Min(currentMaxHp, currentHp + amount);
+
             OnHealthChanged?.Invoke(currentHp, currentMaxHp);
         }
 
@@ -249,7 +248,6 @@ namespace AstroSurvivor
         private void Die()
         {
             OnPlayerDied?.Invoke();
-            Debug.Log("Player died!");
         }
         #endregion
 
