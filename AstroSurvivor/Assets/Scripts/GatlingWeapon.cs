@@ -53,10 +53,14 @@ public class GatlingWeapon : MonoBehaviour
         projectile.transform.position = transform.position;
         projectile.transform.rotation = transform.rotation;
 
+        int damage = (int)_stats.CalculateDamage();
+        bool critic = _stats.currentDamage < damage;
+
         projectile.Fire(
             transform.forward,
             projectileSpeed,
-            _stats ? (int)_stats.CalculateDamage() : enemySO.baseDamage
+            damage,
+            critic
         );
     }
 

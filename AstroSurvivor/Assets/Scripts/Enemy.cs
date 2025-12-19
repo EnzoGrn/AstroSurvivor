@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System;
 using UnityEngine.UI;
+using AstroSurvivor;
+using System.Runtime.ConstrainedExecution;
 
 public class Enemy : MonoBehaviour
 {
@@ -127,15 +129,13 @@ public class Enemy : MonoBehaviour
     // DAMAGE & FEEDBACK
     // ======================
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(int dmg, Vector3 hitpoint, bool critic = false)
     {
         _currentHealth -= dmg;
         _feedback?.OnHit();
 
         if (_currentHealth <= 0)
-        {
             Die();
-        }
     }
 
     private void Die()
