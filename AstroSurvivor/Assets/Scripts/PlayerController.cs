@@ -1,6 +1,8 @@
-using UnityEngine;
-using System.Collections;
 using AstroSurvivor;
+using Synty.Interface.SciFiSoldierHUD.Samples;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController3D : MonoBehaviour
@@ -17,6 +19,9 @@ public class PlayerController3D : MonoBehaviour
     [SerializeField] private float barrelRollBoostMultiplier = 2.5f; // Multiplicateur de vitesse pendant le barrel roll
 
     public ThrustersSyncController thrusters;
+
+    [Header("Parameters")]
+    public List<SampleAnimatorActionData> animatorActions;
 
     private Rigidbody _rigidbody;
     private Camera _mainCamera;
@@ -194,7 +199,12 @@ public class PlayerController3D : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log($"Player took {damage} damage.");
         _stats.TakeDamage(damage);
+        foreach (SampleAnimatorActionData action in animatorActions)
+        {
+            action.Execute();
+        }
     }
 
     private void OnPlayerDied()

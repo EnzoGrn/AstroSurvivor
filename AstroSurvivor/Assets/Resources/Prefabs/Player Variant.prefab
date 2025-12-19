@@ -5605,6 +5605,14 @@ MonoBehaviour:
   barrelRollCooldown: 1.5
   barrelRollBoostMultiplier: 2.5
   thrusters: {fileID: 3672739397094087156}
+  animatorActions:
+  - animator: {fileID: 0}
+    type: 0
+    parameterName: Hit
+    boolToggle: 0
+    boolValue: 0
+    floatValue: 0
+    intValue: 0
 --- !u!54 &2584623838487477626
 Rigidbody:
   m_ObjectHideFlags: 0
