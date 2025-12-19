@@ -25,5 +25,5 @@ MonoBehaviour:
   - hp_root
   maxPoints: 3
   pointCost: 1
-  treePosition: {x: 200, y: -150}
+  treePosition: {x: 250, y: -125}
   nodeColor: {r: 0.8113208, g: 0.648245, b: 0.14925243, a: 1}

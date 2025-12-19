@@ -739,6 +739,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1029753612667854, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5833120307499511242}
+    - targetCorrespondingSourceObject: {fileID: 1029753612667854, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9042050831415521410}
   m_SourcePrefab: {fileID: 100100000, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}
 --- !u!1 &7605119226955236468 stripped
 GameObject:
@@ -839,6 +842,23 @@ MonoBehaviour:
   baseRange: 10
   baseMoveSpeed: 50
   moveSpeedModifier: 0
+--- !u!114 &9042050831415521410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7605119226955236468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1dfce9bf9a95142bff7b724a0c0339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AstroSurvivor.TalentTreeManager
+  talentTree: {fileID: 11400000, guid: 24ec30beecf64d141b53375ae310c2db, type: 2}
+  playerStats: {fileID: 5833120307499511242}
+  currentLevel: 1
+  availableTalentPoints: 0
+  totalPointsSpent: 0
 --- !u!4 &7609202357933728586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4563042777394416, guid: 79035093c9587c246b3bb29ffc5838a4, type: 3}

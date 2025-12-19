@@ -111,7 +111,7 @@ namespace AstroSurvivor
 
             if (statModifiers.Count > 0)
             {
-                fullDesc += "\n\n<b>Bonus:</b>";
+                fullDesc += "<b>Bonus:</b>";
                 foreach (var modifier in statModifiers)
                 {
                     fullDesc += $"\n• {modifier.GetFormattedDescription()}";
@@ -120,7 +120,7 @@ namespace AstroSurvivor
 
             if (maxPoints > 1)
             {
-                fullDesc += $"\n\n<i>Points max: {maxPoints}</i>";
+                fullDesc += $"\n<i>Points max: {maxPoints}</i>";
             }
 
             return fullDesc;

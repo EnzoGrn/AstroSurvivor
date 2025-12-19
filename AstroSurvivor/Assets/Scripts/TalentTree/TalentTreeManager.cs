@@ -23,16 +23,17 @@ namespace AstroSurvivor
         private HashSet<string> unlockedNodeIds = new HashSet<string>();
 
         // Events
-        public event Action<TalentNodeData, int> OnTalentUnlocked; // talent, points investis
+        public event Action<string, int> OnTalentUnlocked; // nodeId, points investis
         public event Action<int> OnTalentPointsChanged; // nouveaux points disponibles
         public event Action<int> OnLevelUp; // nouveau niveau
-        public event Action OnTalentTreeReset;
+        public event Action OnTalentsReset; // arbre réinitialisé
 
         #region Properties
         public TalentTree TalentTree => talentTree;
         public int AvailableTalentPoints => availableTalentPoints;
         public int TotalPointsSpent => totalPointsSpent;
         public int CurrentLevel => currentLevel;
+        public int treeLevel => currentLevel; // Alias pour l'UI
         public Dictionary<string, UnlockedTalent> UnlockedTalents => unlockedTalents;
         #endregion
 
@@ -170,7 +171,7 @@ namespace AstroSurvivor
             totalPointsSpent += node.pointCost;
 
             // Notifications
-            OnTalentUnlocked?.Invoke(node, unlockedTalents[node.nodeId].pointsInvested);
+            OnTalentUnlocked?.Invoke(node.nodeId, unlockedTalents[node.nodeId].pointsInvested);
             OnTalentPointsChanged?.Invoke(availableTalentPoints);
 
             Debug.Log($"Talent '{node.talentName}' débloqué! Points investis: {unlockedTalents[node.nodeId].pointsInvested}/{node.maxPoints}");
@@ -246,7 +247,7 @@ namespace AstroSurvivor
                 playerStats.InitializeStats();
             }
 
-            OnTalentTreeReset?.Invoke();
+            OnTalentsReset?.Invoke();
             OnTalentPointsChanged?.Invoke(availableTalentPoints);
 
             Debug.Log("Arbre de talents réinitialisé!");
