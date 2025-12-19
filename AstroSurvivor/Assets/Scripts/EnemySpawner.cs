@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour {
                 yield return new WaitUntil(() => _Selected == true);
             }
 
-            TalentTree.AddTalentPoints(2);
+            TalentTree.LevelUp();
 
             currentWave++;
             currentZone++;
