@@ -16,6 +16,6 @@ MonoBehaviour:
   baseHP: 25
   baseDamage: 5
   speed: 20
-  attackType: 1
-  attackRange: 0
-  attackSpeed: 0
+  attackType: 2
+  attackRange: 10
+  attackSpeed: 10

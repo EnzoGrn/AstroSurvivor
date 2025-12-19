@@ -2344,6 +2344,7 @@ MonoBehaviour:
   baseSpawnInterval: 1
   waveUI: {fileID: 307856277}
   upgradePanelController: {fileID: 62660345}
+  TalentTree: {fileID: 0}
 --- !u!4 &1571891345
 Transform:
   m_ObjectHideFlags: 0
