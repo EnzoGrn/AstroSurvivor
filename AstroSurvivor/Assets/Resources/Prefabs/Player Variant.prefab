@@ -5015,7 +5015,6 @@ MonoBehaviour:
   treeNameText: {fileID: 5372379993134304352}
   resetButton: {fileID: 0}
   tooltip: {fileID: 971938402145085405}
-  nodeSpacing: 150
   connectionLineColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   activeConnectionColor: {r: 0.5, g: 1, b: 0.5, a: 1}
   connectionLineWidth: 3

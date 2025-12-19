@@ -33,7 +33,6 @@ namespace AstroSurvivor
         [SerializeField] private TalentTooltipUI tooltip;
 
         [Header("Configuration")]
-        [SerializeField] private float nodeSpacing = 150f;
         [SerializeField] private Color connectionLineColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
         [SerializeField] private Color activeConnectionColor = new Color(0.5f, 1f, 0.5f, 1f);
         [SerializeField] private float connectionLineWidth = 3f;

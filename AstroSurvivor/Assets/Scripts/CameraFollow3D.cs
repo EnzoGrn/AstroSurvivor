@@ -19,9 +19,10 @@ public class CameraFollow3D : MonoBehaviour
 
     private void LateUpdate()
     {
+        target = GameObject.FindWithTag("Player").transform;
+
         if (target == null)
             return;
-
         // Calculer la position désirée de la caméra
         Vector3 offset = Vector3.back * distance + Vector3.up * height;
 
