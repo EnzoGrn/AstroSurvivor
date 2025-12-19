@@ -56,4 +56,16 @@ public class CameraFollow3D : MonoBehaviour
             transform.rotation = Quaternion.Euler(angle, 0f, 0f);
         }
     }
+
+    public void DezoomForBarrelRoll()
+    {
+        height += 20f;
+        distance += 20f;
+    }
+
+    public void RezoomAfterBarrelRoll()
+    {
+        height -= 20f;
+        distance -= 20f;
+    }
 }
