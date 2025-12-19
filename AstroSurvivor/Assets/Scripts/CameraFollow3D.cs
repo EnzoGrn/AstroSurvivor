@@ -19,8 +19,11 @@ public class CameraFollow3D : MonoBehaviour
 
     private void LateUpdate()
     {
-        target = GameObject.FindWithTag("Player").transform;
+        var player = GameObject.FindWithTag("Player");
 
+        if (player == null)
+            return;
+        target = player.transform;
         if (target == null)
             return;
         // Calculer la position désirée de la caméra

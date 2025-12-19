@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     private int _damage;
     private float _lifetime = 3f;
     private float _timer;
+    private bool critic;
 
     [Header("Trail Settings")]
     [SerializeField] private float trailTime = 0.3f;
@@ -23,12 +24,13 @@ public class Projectile : MonoBehaviour
         SetupTrail();
     }
 
-    public void Fire(Vector3 direction, float speed, int damage)
+    public void Fire(Vector3 direction, float speed, int damage, bool critique = false)
     {
         _direction = direction.normalized;
         _speed = speed;
         _damage = damage;
         _timer = 0f;
+        critic = critique;
 
         // Réinitialise le trail quand on tire
         if (trail != null)
@@ -49,10 +51,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Projectile collided with " + other.name);
-        if (other.GetComponent<Enemy>() is Enemy enemy)
-        {
-            enemy.TakeDamage(_damage);
+        if (other.GetComponent<Enemy>() is Enemy enemy) {
+            enemy.TakeDamage(_damage, transform.position, critic);
+
             Disable();
         }
     }

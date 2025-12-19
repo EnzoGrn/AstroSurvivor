@@ -29,7 +29,7 @@ namespace AstroSurvivor
         private float currentMaxHp;
         private float currentHp;
         private float currentShield;
-        private float currentDamage;
+        public float currentDamage;
         private float currentCriticalChance;
         private float currentCriticalDamage;
         private float currentAttackSpeed;
@@ -240,7 +240,7 @@ namespace AstroSurvivor
         public float CalculateDamage()
         {
             bool isCritical = UnityEngine.Random.Range(0f, 100f) < currentCriticalChance;
-            
+
             if (isCritical)
                 return currentDamage * (currentCriticalDamage / 100f);
             return currentDamage;
