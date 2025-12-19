@@ -1,3 +1,4 @@
+using AstroSurvivor;
 using AstroSurvivor.UI;
 using System.Collections;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class EnemySpawner : MonoBehaviour {
 
     public WaveUI waveUI;
     public UpgradeUIController upgradePanelController;
+    public TalentTreeManager TalentTree;
 
     private bool _Selected;
 
@@ -43,6 +45,8 @@ public class EnemySpawner : MonoBehaviour {
 
                 yield return new WaitUntil(() => _Selected == true);
             }
+
+            TalentTree.AddTalentPoints(2);
 
             currentWave++;
             currentZone++;

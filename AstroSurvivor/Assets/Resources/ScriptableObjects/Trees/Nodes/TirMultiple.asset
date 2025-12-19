@@ -25,5 +25,5 @@ MonoBehaviour:
   - damage_1
   maxPoints: 2
   pointCost: 1
-  treePosition: {x: -200, y: -300}
+  treePosition: {x: -250, y: -350}
   nodeColor: {r: 0.1882353, g: 0.8117647, b: 0.5933649, a: 1}

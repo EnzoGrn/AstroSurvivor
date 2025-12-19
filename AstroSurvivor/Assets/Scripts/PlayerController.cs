@@ -6,7 +6,6 @@ using AstroSurvivor;
 public class PlayerController3D : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] private float maxSpeed = 20f;
     [SerializeField] private float rotationSpeed = 15f;
 
     [Header("Space Settings")]
