@@ -6,7 +6,6 @@ public class GatlingWeapon : MonoBehaviour
     [Header("Weapon Settings")]
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private float projectileSpeed = 25f;
-    [SerializeField] private int projectileDamage = 1;
 
     [Header("Pooling")]
     [SerializeField] private int poolSize = 30;
