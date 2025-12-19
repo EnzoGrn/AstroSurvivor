@@ -1,10 +1,10 @@
+using AstroSurvivor;
 using UnityEngine;
 
 public class GatlingWeapon : MonoBehaviour
 {
     [Header("Weapon Settings")]
     [SerializeField] private Projectile projectilePrefab;
-    [SerializeField] private float fireRate = 10f;
     [SerializeField] private float projectileSpeed = 25f;
     [SerializeField] private int projectileDamage = 1;
 
@@ -15,8 +15,12 @@ public class GatlingWeapon : MonoBehaviour
     private Projectile[] _projectilePool;
     private int _currentIndex;
 
+    private PlayerStats _stats;
+
     private void Awake()
     {
+        _stats = GetComponentInParent<PlayerStats>();
+
         InitializePool();
     }
 
@@ -27,11 +31,13 @@ public class GatlingWeapon : MonoBehaviour
 
     private void HandleAutoFire()
     {
+        float fireRate = _stats.AttackSpeed;
+
         _fireTimer += Time.deltaTime;
 
-        if (_fireTimer >= 1f / fireRate)
-        {
+        if (_fireTimer >= 1f / fireRate) {
             Fire();
+
             _fireTimer = 0f;
         }
     }
@@ -46,7 +52,7 @@ public class GatlingWeapon : MonoBehaviour
         projectile.Fire(
             transform.forward,
             projectileSpeed,
-            projectileDamage
+            (int)_stats.CalculateDamage()
         );
     }
 

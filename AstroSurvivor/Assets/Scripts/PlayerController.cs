@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using AstroSurvivor;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController3D : MonoBehaviour
@@ -23,9 +24,22 @@ public class PlayerController3D : MonoBehaviour
     private bool _isBarrelRolling = false;
     private float _lastBarrelRollTime = -999f;
 
+    private PlayerStats _stats;
+
+    private void OnEnable()
+    {
+        _stats.OnPlayerDied += OnPlayerDied;
+    }
+
+    private void OnDisable()
+    {
+        _stats.OnPlayerDied -= OnPlayerDied;
+    }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _stats = GetComponent<PlayerStats>();
         _mainCamera = Camera.main;
         _rigidbody.useGravity = false;
         _rigidbody.angularDamping = 2f;
@@ -98,7 +112,7 @@ public class PlayerController3D : MonoBehaviour
         thrusters.UpdateThrusters(moveInput);
         if (movement.magnitude > 0.1f)
         {
-            Vector3 targetVelocity = movement * maxSpeed;
+            Vector3 targetVelocity = movement * _stats.MoveSpeed;
             targetVelocity.y = _rigidbody.linearVelocity.y;
             _rigidbody.linearVelocity = Vector3.Lerp(_rigidbody.linearVelocity, targetVelocity, 0.5f);
         }
@@ -112,9 +126,9 @@ public class PlayerController3D : MonoBehaviour
 
         Vector3 vel = _rigidbody.linearVelocity;
         vel.y = 0f;
-        if (vel.magnitude > maxSpeed)
+        if (vel.magnitude > _stats.MoveSpeed)
         {
-            vel = vel.normalized * maxSpeed;
+            vel = vel.normalized * _stats.MoveSpeed;
             vel.y = _rigidbody.linearVelocity.y;
             _rigidbody.linearVelocity = vel;
         }
@@ -145,7 +159,11 @@ public class PlayerController3D : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        // Implémenter la logique de prise de dégâts ici
-        Debug.Log($"Player took {damage} damage.");
+        _stats.TakeDamage(damage);
+    }
+
+    private void OnPlayerDied()
+    {
+        // TODO: Death animation.
     }
 }

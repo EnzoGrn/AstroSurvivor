@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AstroSurvivor.WeightedUpgradePool
   Upgrades:
   - {fileID: 11400000, guid: df93da2b140f01c49a1d178f9ca9b64b, type: 2}
-  - {fileID: 11400000, guid: 1823dad123a430e498dafe71948c48f7, type: 2}
-  - {fileID: 11400000, guid: d509544411f35a647964feb2d7f6db90, type: 2}
   RarityWeights:
   - Rarity: 0
     Weight: 60

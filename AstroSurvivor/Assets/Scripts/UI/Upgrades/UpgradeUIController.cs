@@ -5,6 +5,7 @@ using UnityEngine;
 namespace AstroSurvivor.UI {
 
     using AstroSurvivor;
+    using System;
 
     public class UpgradeUIController : MonoBehaviour {
 
@@ -18,17 +19,21 @@ namespace AstroSurvivor.UI {
         private PlayerContext _Context;
         private PlayerBuildState _BuildState;
 
+        public Action OnSelected;
+
         public void Initialize(PlayerContext ctx, PlayerBuildState state)
         {
             _Context = ctx;
             _BuildState = state;
         }
 
-        public void Open()
+        public bool Open()
         {
-            Panel.SetVisible(true);
+            List<UpgradeData> upgrades = RollValidUpgrades(Cards.Length);
 
-            var upgrades = RollValidUpgrades(Cards.Length);
+            if (upgrades == null || upgrades.Count == 0)
+                return false;
+            Panel.SetVisible(true);
 
             for (int i = 0; i < Cards.Length; i++) {
                 if (i < upgrades.Count) {
@@ -39,6 +44,8 @@ namespace AstroSurvivor.UI {
                     Cards[i].gameObject.SetActive(false);
                 }
             }
+
+            return true;
         }
 
         public void Close()
@@ -76,6 +83,8 @@ namespace AstroSurvivor.UI {
             BuildSaveSystem.Save(_BuildState);
 
             Close();
+
+            OnSelected?.Invoke();
         }
     }
 }
